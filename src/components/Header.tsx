@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
@@ -10,6 +11,7 @@ const Header = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Technologies', href: '#technologies' },
     { name: 'Education', href: '#education' },
     { name: 'Certifications', href: '#certifications' },
     { name: 'YouTube', href: '#youtube' },
@@ -26,19 +28,19 @@ const Header = () => {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="fixed top-0 left-0 right-0 z-40 glass-card mx-4 mt-4 rounded-2xl"
+        className="fixed top-0 left-0 right-0 z-40 glass-card mx-2 mt-2 rounded-xl border border-primary/10"
       >
-        <div className="flex items-center justify-between p-4">
+        <div className="flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="font-space-grotesk font-bold text-xl cursor-hover"
+            className="font-space-grotesk font-bold text-lg cursor-hover"
           >
             Pagidimarri Sai
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {menuItems.map((item) => (
               <motion.a
                 key={item.name}
@@ -47,7 +49,7 @@ const Header = () => {
                   e.preventDefault();
                   handleMenuClick(item.href);
                 }}
-                className="cursor-hover font-medium transition-colors hover:text-primary"
+                className="cursor-hover font-medium text-sm transition-colors hover:text-primary py-1 px-2 rounded-md hover:bg-primary/5"
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
               >
@@ -57,11 +59,11 @@ const Header = () => {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <motion.a
               href="/pagidimarri-sai-cv.pdf"
               download
-              className="btn-primary cursor-hover hidden sm:flex items-center gap-2"
+              className="btn-primary cursor-hover hidden sm:flex items-center gap-2 text-sm px-3 py-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -74,11 +76,11 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden btn-glass cursor-hover"
+              className="md:hidden btn-glass cursor-hover p-2"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </motion.button>
           </div>
         </div>
