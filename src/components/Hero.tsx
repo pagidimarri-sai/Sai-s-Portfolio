@@ -1,21 +1,6 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Instagram, Twitter } from 'lucide-react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
-
-const AnimatedSphere = () => {
-  return (
-    <Sphere visible args={[1, 100, 200]} scale={2}>
-      <MeshDistortMaterial
-        color="#8B5CF6"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0}
-      />
-    </Sphere>
-  );
-};
 
 const Hero = () => {
   const socialLinks = [
@@ -31,14 +16,9 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden pt-20">
-      {/* Background 3D Animation */}
-      <div className="absolute inset-0 opacity-20">
-        <Canvas>
-          <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
-          <AnimatedSphere />
-        </Canvas>
+      {/* Background gradient animation */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/10">
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent animate-pulse" />
       </div>
 
       {/* Floating particles */}
