@@ -1,29 +1,41 @@
+"use client";
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Monitor, Code, Database, Cloud } from 'lucide-react';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Monitor, Code, Database, Cloud } from "lucide-react";
+import {
+  SiReact,
+  SiNodedotjs,
+  SiPython,
+  SiJavascript,
+  SiTypescript,
+  SiMongodb,
+  SiFirebase,
+  SiDocker,
+  SiGit,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiExpress,
+} from "react-icons/si";
 
 const Technologies = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const techStack = [
-    { name: "React.js", color: "#61DAFB", category: "Frontend" },
-    { name: "Node.js", color: "#339933", category: "Backend" },
-    { name: "Python", color: "#3776AB", category: "Backend" },
-    { name: "JavaScript", color: "#F7DF1E", category: "Frontend" },
-    { name: "TypeScript", color: "#3178C6", category: "Frontend" },
-    { name: "MongoDB", color: "#47A248", category: "Database" },
-    { name: "Firebase", color: "#FFCA28", category: "Cloud" },
-    { name: "AWS", color: "#FF9900", category: "Cloud" },
-    { name: "Docker", color: "#2496ED", category: "DevOps" },
-    { name: "Git", color: "#F05032", category: "Tools" },
-    { name: "Tailwind CSS", color: "#06B6D4", category: "Frontend" },
-    { name: "Next.js", color: "#000000", category: "Frontend" },
-    { name: "Express.js", color: "#000000", category: "Backend" },
-    { name: "PostgreSQL", color: "#336791", category: "Database" },
-    { name: "Redux", color: "#764ABC", category: "Frontend" },
-    { name: "GraphQL", color: "#E10098", category: "API" },
+    { name: "React.js", color: "#61DAFB", category: "Frontend", icon: SiReact },
+    { name: "Node.js", color: "#339933", category: "Backend", icon: SiNodedotjs },
+    { name: "Python", color: "#3776AB", category: "Backend", icon: SiPython },
+    { name: "JavaScript", color: "#F7DF1E", category: "Frontend", icon: SiJavascript },
+    { name: "TypeScript", color: "#3178C6", category: "Frontend", icon: SiTypescript },
+    { name: "MongoDB", color: "#47A248", category: "Database", icon: SiMongodb },
+    { name: "Firebase", color: "#FFCA28", category: "Cloud", icon: SiFirebase },
+    { name: "Docker", color: "#2496ED", category: "DevOps", icon: SiDocker },
+    { name: "Git", color: "#F05032", category: "Tools", icon: SiGit },
+    { name: "Tailwind CSS", color: "#06B6D4", category: "Frontend", icon: SiTailwindcss },
+    { name: "Next.js", color: "#000000", category: "Frontend", icon: SiNextdotjs },
+        { name: "Node.js", color: "#339933", category: "Backend", icon: SiNodedotjs },
+
   ];
 
   const categories = [
@@ -36,6 +48,7 @@ const Technologies = () => {
   return (
     <section id="technologies" className="py-20 px-4 lg:px-6">
       <div className="max-w-7xl mx-auto">
+        {/* Heading */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -50,7 +63,7 @@ const Technologies = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
-          {/* Mac Screen Mockup */}
+          {/* Mac Mockup */}
           <motion.div
             ref={ref}
             initial={{ x: -100, opacity: 0 }}
@@ -61,16 +74,16 @@ const Technologies = () => {
             <div className="relative mx-auto max-w-2xl">
               {/* Mac Monitor */}
               <div className="relative bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-3xl p-6 shadow-2xl">
-                {/* Monitor Stand */}
+                {/* Stand */}
                 <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-gradient-to-b from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-700 rounded-b-2xl" />
                 <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-48 h-4 bg-gradient-to-r from-gray-400 via-gray-500 to-gray-400 dark:from-gray-500 dark:via-gray-600 dark:to-gray-500 rounded-full" />
-                
+
                 {/* Screen */}
                 <div className="bg-black rounded-2xl p-4 relative overflow-hidden">
                   <div className="aspect-video bg-gradient-to-br from-gray-900 to-black rounded-xl relative overflow-hidden">
-                    {/* Tech Stack Visualization */}
-                    <div className="absolute inset-4 grid grid-cols-4 gap-2">
-                      {techStack.slice(0, 16).map((tech, index) => (
+                    {/* Grid with icons */}
+                    <div className="absolute inset-4 grid grid-cols-4 grid-rows-3 gap-2">
+                      {techStack.slice(0, 12).map((tech, index) => (
                         <motion.div
                           key={tech.name}
                           initial={{ scale: 0, opacity: 0 }}
@@ -79,10 +92,12 @@ const Technologies = () => {
                           className="flex flex-col items-center justify-center p-2 rounded-lg glass group cursor-pointer"
                           whileHover={{ scale: 1.1, y: -5 }}
                         >
-                          <div 
-                            className="w-6 h-6 lg:w-8 lg:h-8 rounded-full mb-2 transition-all duration-300"
+                          <div
+                            className="flex items-center justify-center w-10 h-10 rounded-full mb-2"
                             style={{ backgroundColor: tech.color }}
-                          />
+                          >
+                            <tech.icon size={20} color="#fff" />
+                          </div>
                           <span className="text-xs text-white font-medium text-center opacity-0 group-hover:opacity-100 transition-opacity">
                             {tech.name}
                           </span>
@@ -111,18 +126,13 @@ const Technologies = () => {
                       />
                     ))}
                   </div>
-                  
-                  {/* Apple Logo */}
-                  <div className="absolute top-2 left-2 w-3 h-3 bg-white rounded-full opacity-80" />
                 </div>
               </div>
-              
-              {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 blur-xl -z-10 rounded-3xl" />
             </div>
           </motion.div>
 
-          {/* Technologies Categories */}
+          {/* Categories */}
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={isInView ? { x: 0, opacity: 1 } : {}}
@@ -139,21 +149,17 @@ const Technologies = () => {
                 className="glass-card p-6 group cursor-pointer"
               >
                 <div className="flex items-start gap-4">
-                  <div 
+                  <div
                     className="p-3 rounded-xl group-hover:scale-110 transition-transform"
-                    style={{ backgroundColor: category.color + '20' }}
+                    style={{ backgroundColor: category.color + "20" }}
                   >
-                    <category.icon 
-                      className="w-6 h-6" 
-                      style={{ color: category.color }}
-                    />
+                    <category.icon className="w-6 h-6" style={{ color: category.color }} />
                   </div>
-                  
                   <div className="flex-1">
                     <h3 className="heading-md text-lg mb-3">{category.name}</h3>
                     <div className="flex flex-wrap gap-2">
                       {techStack
-                        .filter(tech => tech.category === category.name)
+                        .filter((tech) => tech.category === category.name)
                         .map((tech) => (
                           <motion.span
                             key={tech.name}
@@ -172,7 +178,7 @@ const Technologies = () => {
           </motion.div>
         </div>
 
-        {/* Call to Action */}
+        {/* CTA */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -186,14 +192,13 @@ const Technologies = () => {
               <Monitor className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="heading-md mb-4">Always Learning, Always Innovating</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Technology evolves rapidly, and so do I. These technologies represent my current toolkit 
-                for building next-generation applications that push the boundaries of what's possible.
+                Technology evolves rapidly, and so do I. These technologies represent my current toolkit for building next-generation applications that push the boundaries of what's possible.
               </p>
               <motion.a
                 href="#projects"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+                  document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="btn-primary cursor-hover"
                 whileHover={{ scale: 1.05 }}

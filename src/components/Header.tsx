@@ -30,7 +30,7 @@ const Header = () => {
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-40 glass-card mx-2 mt-2 rounded-xl border border-primary/10"
       >
-        <div className="flex items-center justify-between px-4 py-3">
+        <div className="flex items-center justify-between px-4 py-0.5">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
